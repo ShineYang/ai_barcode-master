@@ -94,8 +94,7 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
 
         zxing.setAutoFocus(true)
         zxing.setAspectTolerance(0.5f)
-        zxing.setShouldScaleToFill(false)
-        return zxing;
+        return zxing
     }
 
     override fun dispose() {
