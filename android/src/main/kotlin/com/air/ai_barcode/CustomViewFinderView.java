@@ -26,14 +26,14 @@ import me.dm7.barcodescanner.core.ViewFinderView;
 public class CustomViewFinderView extends View implements IViewFinder {
     private Rect mFramingRect;
 
-    private static final float PORTRAIT_WIDTH_RATIO = 1f;
+    private static final float PORTRAIT_WIDTH_RATIO = 6f/8;
     private static final float PORTRAIT_WIDTH_HEIGHT_RATIO = 0.75f;
 
     private static final float LANDSCAPE_HEIGHT_RATIO = 5f/8;
     private static final float LANDSCAPE_WIDTH_HEIGHT_RATIO = 1.4f;
     private static final int MIN_DIMENSION_DIFF = 50;
 
-    private static final float DEFAULT_SQUARE_DIMENSION_RATIO = 1f;
+    private static final float DEFAULT_SQUARE_DIMENSION_RATIO = 2f / 3;
 
     protected int mBorderLineLength;
     protected boolean mSquareViewFinder;
@@ -113,8 +113,8 @@ public class CustomViewFinderView extends View implements IViewFinder {
 
     public synchronized void updateFramingRect() {
         Point viewResolution = new Point(getWidth(), getHeight());
-        int width;
-        int height;
+        int width = 0;
+        int height = 0;
         int orientation = DisplayUtils.getScreenOrientation(getContext());
 
         if(mSquareViewFinder) {
@@ -124,14 +124,6 @@ public class CustomViewFinderView extends View implements IViewFinder {
             } else {
                 width = (int) (getWidth() * DEFAULT_SQUARE_DIMENSION_RATIO);
                 height = width;
-            }
-        } else {
-            if(orientation != Configuration.ORIENTATION_PORTRAIT) {
-                height = (int) (getHeight() * LANDSCAPE_HEIGHT_RATIO);
-                width = (int) (LANDSCAPE_WIDTH_HEIGHT_RATIO * height);
-            } else {
-                width = (int) (getWidth() * PORTRAIT_WIDTH_RATIO);
-                height = (int) (PORTRAIT_WIDTH_HEIGHT_RATIO * width);
             }
         }
 
