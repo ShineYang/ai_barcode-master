@@ -26,8 +26,8 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
      * 用于向Flutter发送数据
      */
     override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
-        this.eventChannelSink = events;
-        this.eventChannelSink?.success("onListen");
+        this.eventChannelSink = events
+        this.eventChannelSink?.success("onListen")
     }
 
     override fun onCancel(arguments: Any?) {
@@ -38,7 +38,7 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
      */
     override fun handleResult(rawResult: Result?) {
 
-        this.channelResult.success("${rawResult?.toString()}");
+        this.channelResult.success("${rawResult?.toString()}")
 //        this.eventChannelSink?.success("${rawResult?.toString()}")
     }
 
@@ -47,7 +47,7 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
      */
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
 
-        this.channelResult = result;
+        this.channelResult = result
         when (call.method) {
             "startCamera" -> startCamera()
             "stopCamera" -> stopCamera()
@@ -68,32 +68,33 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
             return CustomViewFinderView(context)
         }
     }
-    var linear: LinearLayout = LinearLayout(context);
-    var textView: TextView = TextView(context);
+    var linear: LinearLayout = LinearLayout(context)
+    var textView: TextView = TextView(context)
 
 
-    lateinit var channelResult: MethodChannel.Result;
-    var eventChannelSink: EventChannel.EventSink? = null;
+    lateinit var channelResult: MethodChannel.Result
+    var eventChannelSink: EventChannel.EventSink? = null
 
     init {
-        textView.setText("Scanner view");
+        textView.setText("Scanner view")
         /*
         MethodChannel
          */
-        var methodChannel: MethodChannel = MethodChannel(binaryMessenger, "view_type_id_scanner_view_method_channel");
-        methodChannel.setMethodCallHandler(this);
+        var methodChannel: MethodChannel = MethodChannel(binaryMessenger, "view_type_id_scanner_view_method_channel")
+        methodChannel.setMethodCallHandler(this)
         /*
         EventChannel
          */
-        var eventChannel: EventChannel = EventChannel(binaryMessenger, "view_type_id_scanner_view_event_channel");
-        eventChannel.setStreamHandler(this);
+        var eventChannel: EventChannel = EventChannel(binaryMessenger, "view_type_id_scanner_view_event_channel")
+        eventChannel.setStreamHandler(this)
     }
 
     override fun getView(): View {
 
 
-        zxing.setAutoFocus(true);
-        zxing.setAspectTolerance(0.5f);
+        zxing.setAutoFocus(true)
+        zxing.setAspectTolerance(0.5f)
+        zxing.setShouldScaleToFill(false)
         return zxing;
     }
 
@@ -107,30 +108,30 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
     }
 
     private fun startCamera() {
-        zxing.startCamera();
+        zxing.startCamera()
     }
 
     private fun stopCamera() {
-        zxing.stopCamera();
+        zxing.stopCamera()
     }
 
     private fun resumeCameraPreview() {
-        zxing.resumeCameraPreview(this);
+        zxing.resumeCameraPreview(this)
     }
 
     private fun stopCameraPreview() {
-        zxing.stopCameraPreview();
+        zxing.stopCameraPreview()
     }
 
     private fun openFlash() {
-        zxing.flash = true;
+        zxing.flash = true
     }
 
     private fun closeFlash() {
-        zxing.flash = false;
+        zxing.flash = false
     }
 
     private fun toggleFlash() {
-        zxing.toggleFlash();
+        zxing.toggleFlash()
     }
 }
