@@ -29,13 +29,13 @@ public class CustomViewFinderView extends View implements IViewFinder {
     private Rect mFramingRect;
 
     private static final float PORTRAIT_WIDTH_RATIO = 6f/8;
-    private static final float PORTRAIT_WIDTH_HEIGHT_RATIO = 0.75f;
+    private static final float PORTRAIT_WIDTH_HEIGHT_RATIO = 0.5f;
 
     private static final float LANDSCAPE_HEIGHT_RATIO = 5f/8;
     private static final float LANDSCAPE_WIDTH_HEIGHT_RATIO = 1.4f;
     private static final int MIN_DIMENSION_DIFF = 50;
 
-    private static final float DEFAULT_SQUARE_DIMENSION_RATIO = 5f / 8;
+    private static final float DEFAULT_SQUARE_DIMENSION_RATIO = 0.5f;
 
     private static final int[] SCANNER_ALPHA = {0, 64, 128, 192, 255, 192, 128, 64};
     private int scannerAlpha;
