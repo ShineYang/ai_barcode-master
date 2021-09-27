@@ -28,7 +28,7 @@ public class CustomViewFinderView extends View implements IViewFinder {
 
     private Rect mFramingRect;
 
-    private static final float PORTRAIT_WIDTH_RATIO = 6f/8;
+    private static final float PORTRAIT_WIDTH_RATIO = 1f;
     private static final float PORTRAIT_WIDTH_HEIGHT_RATIO = 0.5f;
 
     private static final float LANDSCAPE_HEIGHT_RATIO = 5f/8;
